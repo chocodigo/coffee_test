@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'BlackHanSansR';
+    src: url('/fonts/BlackHanSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'HelveticaB';
+    src: url('/fonts/Helvetica-Bold-Font.ttf')
+}
+
+@font-face {
+    font-family: 'HelveticaR';
+    src: url('/fonts/Helvetica Regular.otf')
+}
+
+:root {
+    --font-black-han-sans-regular: "BlackHanSansR";
+    --font-helvetica-bold: "HelveticaB";
+    --font-helvetica-regular: "HelveticaR";
+
+    --main-color:#00474c;
+}
