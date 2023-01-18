@@ -14,6 +14,7 @@ export const Title = styled.span`
 
 export const BoldText = styled.span`
   font-family: var(--font-helvetica-bold);
+  font-weight: bold;
 `;
 
 export const RegularText = styled.span`

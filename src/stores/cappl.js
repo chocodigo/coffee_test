@@ -7,4 +7,8 @@ export default class CapplStore {
   @observable people = 0;
   //공유자
   @observable sharePeople = 0;
+
+  //테스트 정보
+  @observable info = {};
+  @action setInfo = (val) => (this.info = val);
 }
