@@ -2,8 +2,7 @@ import React from "react";
 import useStores from "../stores/useStores";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import MainStyle from "../styles/main"
-
+import MainStyle from "../styles/main";
 
 const shareList = [
   {
@@ -45,7 +44,10 @@ const Main = observer(() => {
         바쁘다 바빠 카페라이프, <br /> 나는 어떤 유형일까?
       </MainStyle.ExplainText>
       <MainStyle.IntroImage />
-      <MainStyle.StartBtn onClick={startBtnHandler}>
+      <MainStyle.StartBtn
+        onClick={startBtnHandler}
+        className={"main_start_btn"}
+      >
         <MainStyle.StartText>테스트 시작하기</MainStyle.StartText>
         <MainStyle.StartExplainText>
           지금까지 {capplStore.people}명이 참여했어요

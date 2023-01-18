@@ -1,7 +1,7 @@
 export const questionList = [
   {
     id: 1,
-    question: `나 캐로... </br> 왜 오늘따라 커피가 땡길까?`,
+    question: `나 캐로... <br/> 왜 오늘따라 커피가 땡길까?`,
     answerList: [
       {
         text: "어제 야근하다 보니 오늘 너무 피곤해 ㅠㅠ",

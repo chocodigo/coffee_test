@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 import Input from "../styles/inputPages";
 import useStores from "../stores/useStores";
+import { useNavigate } from "react-router-dom";
 
 const InputPage = observer(() => {
   const { capplStore } = useStores();
+
+  const navigate = useNavigate();
 
   let info = {};
 
@@ -29,7 +32,7 @@ const InputPage = observer(() => {
       info = { name, birth, gender };
       capplStore.setInfo(info);
 
-      console.log(capplStore.info);
+      navigate("/test-page");
     }
   };
 

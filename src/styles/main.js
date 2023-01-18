@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BoldText, pxToVh, pxToVw, RegularText, Title} from "./theme";
+import { BoldText, pxToVh, pxToVw, RegularText, Title } from "./theme";
 
 const MainStyle = {};
 
@@ -40,7 +40,9 @@ MainStyle.StartBtn = styled.div`
   height: ${pxToVh(84)};
   background: var(--main-color);
   border-radius: 10px;
-  margin-top: ${pxToVh(46)};
+  &.main_start_btn {
+    margin-top: ${pxToVh(46)};
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
