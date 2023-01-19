@@ -93,4 +93,25 @@ MainStyle.ShareIcon = styled.img`
   }
 `;
 
+MainStyle.LoadingWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #00474c;
+`;
+
+MainStyle.LoadingImg = styled.img.attrs({ src: "/image/loading.svg" })`
+  width: ${pxToVw(196)};
+  height: ${pxToVh(196)};
+  margin-bottom: ${pxToVh(24)};
+`;
+
+MainStyle.LoadingText = styled(RegularText)`
+  font-size: %{pxToVh(15)};
+  color: #EAEAEA;
+`;
+
 export default MainStyle;

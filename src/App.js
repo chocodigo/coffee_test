@@ -5,6 +5,7 @@ import InputPage from "./pages/InputPage";
 import GlobalStyles from "./styles/global-styles";
 import TestPage from "./pages/TestPage";
 import { observer } from "mobx-react";
+import Loading from "./pages/Loading";
 
 const App = observer(() => {
   return (
@@ -14,6 +15,7 @@ const App = observer(() => {
         <Route path="/" element={<Main />} />
         <Route path={"/input-page"} element={<InputPage />} />
         <Route path={"/test-page"} element={<TestPage />} />
+        <Route path={"/loading"} element={<Loading />} />
       </Routes>
     </BrowserRouter>
   );

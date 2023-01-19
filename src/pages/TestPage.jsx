@@ -3,13 +3,18 @@ import { observer } from "mobx-react";
 import Test from "../styles/testPage";
 import useStores from "../stores/useStores";
 import { questionList } from "../data";
+import { useNavigate } from "react-router-dom";
 
 const TestPage = observer(() => {
   const { capplStore } = useStores();
-
+  const navigate = useNavigate();
   const answerClickHandler = (e, item) => {
-    capplStore.setScore(item.score);
-    capplStore.setTestPage(capplStore.testPage + 1);
+    if (capplStore.testPage < questionList.length) {
+      capplStore.setScore(item.score);
+      capplStore.setTestPage(capplStore.testPage + 1);
+    } else {
+      navigate("/loading");
+    }
   };
   return (
     <Test.PageWrapper>
