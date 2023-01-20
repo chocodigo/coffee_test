@@ -11,6 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const cappl = new CapplStore();
 
+if (!window.Kakao.isInitialized()) {
+  window.Kakao.init(process.env.REACT_APP_KAKAO_JS_KEY);
+}
+
 root.render(
   <Provider capplStore={cappl}>
     <App />

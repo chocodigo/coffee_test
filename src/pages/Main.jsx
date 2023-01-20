@@ -32,6 +32,11 @@ const Main = observer(() => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    capplStore.getTestUserNumber();
+    capplStore.getSharePeopleNumber();
+  }, []);
+
   // 시작 버튼 클릭
   const startBtnHandler = () => {
     navigate("/input-page");
@@ -56,12 +61,6 @@ const Main = observer(() => {
       });
     }
   };
-
-  useEffect(() => {
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_KAKAO_JS_KEY);
-    }
-  }, []);
 
   return (
     <MainStyle.MainWrapper>

@@ -11,7 +11,7 @@ const InputPage = observer(() => {
 
   let info = {};
 
-  const [gender, setGender] = useState("male");
+  const [gender, setGender] = useState("M");
 
   // 성별 클릭
   const genderClickHandler = (e, _gender) => {
@@ -47,14 +47,14 @@ const InputPage = observer(() => {
       />
       <Input.input as={"div"}>
         <Input.SelectBtn
-          className={gender === "male" ? "on" : ""}
-          onClick={(e) => genderClickHandler(e, "male")}
+          className={gender === "M" ? "on" : ""}
+          onClick={(e) => genderClickHandler(e, "M")}
         >
           남성
         </Input.SelectBtn>
         <Input.SelectBtn
-          className={gender === "female" ? "on" : ""}
-          onClick={(e) => genderClickHandler(e, "female")}
+          className={gender === "W" ? "on" : ""}
+          onClick={(e) => genderClickHandler(e, "W")}
         >
           여성
         </Input.SelectBtn>

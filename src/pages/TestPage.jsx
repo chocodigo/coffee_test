@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import Test from "../styles/testPage";
 import useStores from "../stores/useStores";
@@ -8,11 +8,23 @@ import { useNavigate } from "react-router-dom";
 const TestPage = observer(() => {
   const { capplStore } = useStores();
   const navigate = useNavigate();
-  const answerClickHandler = (e, item) => {
+
+  useEffect(() => {
+    const resultData = {
+      userInfo: capplStore.info,
+      result: capplStore.testResult,
+    };
+  }, []);
+
+  const answerClickHandler = (e, item, idx) => {
     if (capplStore.testPage < questionList.length) {
+      capplStore.setTestResult(idx);
       capplStore.setScore(item.score);
       capplStore.setTestPage(capplStore.testPage + 1);
     } else {
+      capplStore.setTestResult(idx);
+      capplStore.setScore(item.score);
+
       navigate("/loading");
     }
   };
@@ -38,7 +50,7 @@ const TestPage = observer(() => {
             dangerouslySetInnerHTML={{
               __html: item.text,
             }}
-            onClick={(e) => answerClickHandler(e, item)}
+            onClick={(e) => answerClickHandler(e, item, idx)}
           />
         );
       })}
