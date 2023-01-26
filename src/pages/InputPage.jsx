@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 import Input from "../styles/inputPages";
+import MainStyle from "../styles/main";
 import useStores from "../stores/useStores";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +38,7 @@ const InputPage = observer(() => {
   };
 
   return (
-    <Input.PageWrapper>
+    <MainStyle.MainWrapper>
       <Input.Title>정보입력</Input.Title>
       <Input.Explain>테스트를 위해 정보를 알려주세요!</Input.Explain>
       <Input.input className={"name"} placeholder={"이름을 입력해주세요."} />
@@ -63,7 +64,7 @@ const InputPage = observer(() => {
         입력하신 정보는 본 퀴즈 및 통계 이외의 용도로 사용하지 않습니다.
       </Input.Warning>
       <Input.ConfirmBtn onClick={ConfirmClickHandler}>확인</Input.ConfirmBtn>
-    </Input.PageWrapper>
+    </MainStyle.MainWrapper>
   );
 });
 

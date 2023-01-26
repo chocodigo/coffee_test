@@ -50,6 +50,13 @@ MainStyle.StartBtn = styled.div`
   align-items: center;
   text-align: center;
   color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background: #05634f;
+  }
+  &:active {
+    background: #054463;
+  }
 `;
 
 //버튼 텍스트 (큰)

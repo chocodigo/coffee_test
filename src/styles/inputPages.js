@@ -38,6 +38,7 @@ Input.input = styled.input.attrs({ required: true })`
   justify-content: space-between;
   padding: ${pxToVh(4)} ${pxToVw(4)};
   box-sizing: border-box;
+
   &::placeholder {
     color: #b5b5b5;
     text-align: center;
@@ -53,7 +54,7 @@ Input.SelectBtn = styled.div`
   color: #000000;
   width: ${pxToVw(164)};
   height: ${pxToVh(42)};
-
+  cursor: pointer;
   &.on {
     background: #fff;
     box-shadow: 2px 2px 2px #7575757d;
