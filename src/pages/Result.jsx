@@ -6,11 +6,11 @@ import MainStyle from "../styles/main";
 import ResultStyle from "../styles/result";
 import { shareBtnHandler, shareList } from "./Main";
 import { RegularText } from "../styles/theme";
+import { useNavigate } from "react-router-dom";
 
 const Result = observer(() => {
   const { capplStore } = useStores();
-  // const path = window.location.pathname.split("result/");
-  // const id = path[1];
+  const navigate = useNavigate();
   const [currentResult, setCurrentResult] = useState(resultList[0]);
 
   useEffect(() => {
@@ -18,6 +18,10 @@ const Result = observer(() => {
     const id = path[1];
     setCurrentResult(resultList[id - 1]);
   }, []);
+
+  const replayBtnHandler = () => {
+    navigate(`/`);
+  };
 
   return (
     <MainStyle.MainWrapper>
@@ -79,7 +83,7 @@ const Result = observer(() => {
           );
         })}
       </MainStyle.ShareIconList>
-      <ResultStyle.replayBtn>
+      <ResultStyle.replayBtn onClick={replayBtnHandler}>
         <RegularText>다시하기</RegularText>{" "}
         <img src={`${process.env.PUBLIC_URL}/image/replay.svg`} />
       </ResultStyle.replayBtn>
