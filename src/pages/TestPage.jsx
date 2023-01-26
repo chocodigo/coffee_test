@@ -12,17 +12,17 @@ const TestPage = observer(() => {
   useEffect(() => {
     const resultData = {
       userInfo: capplStore.info,
-      result: capplStore.testResult,
+      result: capplStore.answerList,
     };
   }, []);
 
   const answerClickHandler = (e, item, idx) => {
     if (capplStore.testPage < questionList.length) {
-      capplStore.setTestResult(idx);
+      capplStore.setAnswerList(idx);
       capplStore.setScore(item.score);
       capplStore.setTestPage(capplStore.testPage + 1);
     } else {
-      capplStore.setTestResult(idx);
+      capplStore.setAnswerList(idx);
       capplStore.setScore(item.score);
 
       navigate("/loading");

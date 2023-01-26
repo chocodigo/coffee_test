@@ -8,7 +8,8 @@ MainStyle.MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
 `;
 
 //커피 유형 테스트

@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import MainStyle from "../styles/main";
 
-const shareList = [
+export const shareList = [
   {
     id: "kakao",
     src: "/image/kakao.svg",
@@ -27,6 +27,26 @@ const shareList = [
   },
 ];
 
+// 공유 버튼 클릭
+export const shareBtnHandler = (e, item) => {
+  if (item.id === "share_link") {
+    // 링크 복사 버튼
+    navigator.clipboard.writeText(window.location.href);
+    alert("복사되었습니다.");
+  } else if (item.id === "kakao") {
+    // 카카오 공유 버튼
+    window.Kakao.Share.createDefaultButton({
+      container: "#kakaotalk-sharing-btn",
+      objectType: "text",
+      text: "테스트",
+      link: {
+        webUrl: window.location.href,
+        mobileWebUrl: window.location.href,
+      },
+    });
+  }
+};
+
 const Main = observer(() => {
   const { capplStore } = useStores();
 
@@ -40,26 +60,6 @@ const Main = observer(() => {
   // 시작 버튼 클릭
   const startBtnHandler = () => {
     navigate("/input-page");
-  };
-
-  // 공유 버튼 클릭
-  const shareBtnHandler = (e, item) => {
-    if (item.id === "share_link") {
-      // 링크 복사 버튼
-      navigator.clipboard.writeText(window.location.href);
-      alert("복사되었습니다.");
-    } else if (item.id === "kakao") {
-      // 카카오 공유 버튼
-      window.Kakao.Share.createDefaultButton({
-        container: "#kakaotalk-sharing-btn",
-        objectType: "text",
-        text: "테스트",
-        link: {
-          webUrl: window.location.href,
-          mobileWebUrl: window.location.href,
-        },
-      });
-    }
   };
 
   return (

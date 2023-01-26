@@ -17,7 +17,7 @@ const App = observer(() => {
         <Route path={"/input-page"} element={<InputPage />} />
         <Route path={"/test-page"} element={<TestPage />} />
         <Route path={"/loading"} element={<Loading />} />
-        <Route path={"/result"} element={<Result />} />
+        <Route path={"/result/:id"} element={<Result />} />
       </Routes>
     </BrowserRouter>
   );
