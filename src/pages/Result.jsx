@@ -68,7 +68,7 @@ const Result = observer(() => {
               <img
                 src={`${process.env.PUBLIC_URL}/image/like_hate/${capplStore.currentResult.hate}.svg`}
               />
-              <ResultStyle.ContentsTitle className={"sresult_title"}>
+              <ResultStyle.ContentsTitle className={"result_title"}>
                 {resultList[capplStore.currentResult.hate - 1].title}
               </ResultStyle.ContentsTitle>
             </ResultStyle.Contents>
