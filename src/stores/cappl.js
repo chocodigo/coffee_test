@@ -31,9 +31,9 @@ export default class CapplStore {
   //참여자
   @observable people = 0;
   @action getTestUserNumber = () => {
-    const callback = (data) => {
+    const callback = ({ data }) => {
       this.people = data;
-      console.log(data);
+      // console.log(data);
     };
 
     this.callApi(this.API.getTestUserNumber.bind(this), callback);
@@ -42,12 +42,24 @@ export default class CapplStore {
   //공유자
   @observable sharePeople = 0;
   @action getSharePeopleNumber = () => {
-    const callback = (data) => {
+    const callback = ({ data }) => {
       this.sharePeople = data;
-      console.log(data);
     };
 
     this.callApi(this.API.getShareUserNumber.bind(this), callback);
+  };
+  // 공유 카운트
+  countShareUserNumber = (type) => {
+    const obj = {
+      userInfo: this.info,
+      type,
+    };
+
+    const callback = (response) => {
+      console.log(response);
+    };
+
+    this.callApi(this.API.countShareUserNumber.bind(this, obj), callback);
   };
 
   //테스트 정보
@@ -69,5 +81,38 @@ export default class CapplStore {
   );
   @action setAnswerList = (val) => {
     this.answerList[this.testPage - 1] = val;
+  };
+
+  // 설문지 제출
+  countTestUserNumber = () => {
+    const obj = {
+      userInfo: this.info,
+      result: this.answerList,
+    };
+
+    const callback = (response) => {
+      console.log(response, obj);
+    };
+
+    this.callApi(this.API.countTestUserNumber.bind(this, obj), callback);
+  };
+
+  // 결과 ID
+  @observable resultId = 0;
+  // 결과 object
+  @observable currentResult;
+  // this.resultId === 0 ? resultList[0] : resultList[this.resultId - 1];
+  @action setResultId = (val = 1) => {
+    if (this.score > 1) {
+      const resultData = resultList.find(
+        (item) => item.score_min < this.score && item.score_max >= this.score
+      );
+      this.resultId = resultData.id;
+    } else {
+      this.resultId = val;
+    }
+    if (this.resultId > 0) {
+      this.currentResult = resultList[this.resultId - 1];
+    }
   };
 }

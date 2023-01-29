@@ -6,6 +6,7 @@ import App from "./App";
 import CapplStore from "./stores/cappl";
 import { Provider } from "mobx-react";
 import "dotenv/config";
+import ReactCatcher from "react-catcher";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,7 +17,17 @@ if (!window.Kakao.isInitialized()) {
 }
 
 root.render(
-  <Provider capplStore={cappl}>
-    <App />
-  </Provider>
+  <ReactCatcher
+    fallback={<h1>An Error has occured !!</h1>}
+    errorHandler={(error, errorInfo) => {
+      const error_message = `error: ${error}, errorInfo: ${JSON.stringify(
+        errorInfo
+      )}`;
+      console.log(error_message);
+    }}
+  >
+    <Provider capplStore={cappl}>
+      <App />
+    </Provider>
+  </ReactCatcher>
 );

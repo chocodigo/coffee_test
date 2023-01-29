@@ -8,17 +8,13 @@ const Loading = () => {
   const navigate = useNavigate();
   const { capplStore } = useStores();
 
-  const [resultId, setResultId] = useState(1);
   setTimeout(() => {
-    navigate(`/result/${resultId}`);
+    navigate(`/result/${capplStore.resultId}`);
   }, 1.5 * 1000);
 
   useEffect(() => {
-    const resultData = resultList.find(
-      (item) =>
-        item.score_min < capplStore.score && item.score_max >= capplStore.score
-    );
-    setResultId(resultData.id);
+    capplStore.setResultId();
+    capplStore.countTestUserNumber();
   }, []);
 
   return (

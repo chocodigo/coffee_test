@@ -31,6 +31,18 @@ class ApiRepository {
     let url = "share";
     return this.connectServer("get", url);
   };
+
+  // 테스트 사용자 수 카운트
+  countTestUserNumber = (obj) => {
+    let url = "result";
+    return this.connectServer("post", url, obj);
+  };
+
+  // 공유하기 이용자 수 카운트
+  countShareUserNumber = (obj) => {
+    let url = "share";
+    return this.connectServer("post", url, obj);
+  };
 }
 
 export default ApiRepository;
