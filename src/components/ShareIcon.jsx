@@ -6,24 +6,11 @@ import useStores from "../stores/useStores";
 
 const ShareIcon = observer(({ item }) => {
   const { capplStore } = useStores();
-  useEffect(() => {
-    window.Kakao.Share.createDefaultButton({
-      container: "#kakaotalk-sharing-btn",
-      objectType: "text",
-      text:
-        "바쁘다 바빠 카페라이프, 나는 어떤 유형일까?\n" +
-        "지금 바로 확인해 보세요!",
-      link: {
-        webUrl: window.location.href,
-        mobileWebUrl: window.location.href,
-      },
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   // 공유 버튼 클릭
   const shareBtnHandler = (e, item) => {
     try {
-      console.log("click");
       if (item.id === "link") {
         // 링크 복사 버튼
         navigator.clipboard.writeText(window.location.href).then((r) => {
@@ -31,8 +18,22 @@ const ShareIcon = observer(({ item }) => {
 
           alert("복사되었습니다.");
         });
+      } else if (item.id === "kakao") {
+        window.Kakao.Share.sendDefault({
+          // container: "#kakaotalk-sharing-btn",
+          objectType: "text",
+          text:
+            window.location.pathname === "/"
+              ? "바쁘다 바빠 카페라이프, 나는 어떤 유형일까?\n" +
+                "지금 바로 확인해 보세요!"
+              : `${capplStore.currentResult.sub_title}\n ${capplStore.currentResult.title} 결과 확인하기`,
+          link: {
+            webUrl: window.location.href,
+            mobileWebUrl: window.location.href,
+          },
+        });
       }
-      // capplStore.countShareUserNumber(item.id);
+      capplStore.countShareUserNumber(item.id);
     } catch (error) {
       console.log("공유 오류", error);
     }
