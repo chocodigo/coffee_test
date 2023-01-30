@@ -71,6 +71,7 @@ Input.Warning = styled(RegularText)`
 Input.ConfirmBtn = styled(MainStyle.StartBtn)`
   font-size: ${pxToVh(20.52)};
   margin-top: ${pxToVh(13)};
+  margin-bottom: ${pxToVh(68)};
   width: ${pxToVw(340)};
   height: ${pxToVh(60)};
 `;
