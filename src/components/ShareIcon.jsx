@@ -13,12 +13,27 @@ const ShareIcon = observer(({ item }) => {
     try {
       if (item.id === "link") {
         // 링크 복사 버튼
-        navigator.clipboard.writeText(window.location.href).then((r) => {
-          console.log("링크복사", window.location.href);
+        // navigator.clipboard.writeText(window.location.href).then((r) => {
+        //   console.log("링크복사", window.location.href);
+        //
+        //   alert("복사되었습니다.");
+        //   capplStore.countShareUserNumber(item.id);
+        // });
 
+        const textArea = document.createElement("textarea");
+        textArea.value = window.location.href;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand("copy");
           alert("복사되었습니다.");
           capplStore.countShareUserNumber(item.id);
-        });
+        } catch (err) {
+          console.error("복사 실패", err);
+        }
+        textArea.setSelectionRange(0, 0);
+        document.body.removeChild(textArea);
       } else if (item.id === "kakao") {
         window.Kakao.Share.sendDefault({
           // container: "#kakaotalk-sharing-btn",
