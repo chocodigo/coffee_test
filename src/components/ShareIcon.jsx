@@ -17,6 +17,7 @@ const ShareIcon = observer(({ item }) => {
           console.log("링크복사", window.location.href);
 
           alert("복사되었습니다.");
+          capplStore.countShareUserNumber(item.id);
         });
       } else if (item.id === "kakao") {
         window.Kakao.Share.sendDefault({
@@ -31,9 +32,8 @@ const ShareIcon = observer(({ item }) => {
             webUrl: window.location.href,
             mobileWebUrl: window.location.href,
           },
-        });
+        }).then((r) => capplStore.countShareUserNumber(item.id));
       }
-      capplStore.countShareUserNumber(item.id);
     } catch (error) {
       console.log("공유 오류", error);
     }
