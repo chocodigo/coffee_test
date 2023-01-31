@@ -33,7 +33,7 @@ export const questionList = [
   },
   {
     id: 3,
-    question: `어쨋든 카페로 가기로 한 당신!<br/> 어디로 가볼까?`,
+    question: `어쨌든 카페로 가기로 한 당신!<br/> 어디로 가볼까?`,
     answerList: [
       {
         text: "카페는 분위기지! 당장 인스타에 핫플레이스 검색",
