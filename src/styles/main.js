@@ -91,6 +91,7 @@ MainStyle.ShareImage = styled.img.attrs({ src: "/image/share.svg" })`
 MainStyle.ShareIconList = styled.div`
   display: flex;
   margin-top: ${pxToVh(18)};
+  margin-bottom: ${pxToVh(74)};
 `;
 
 MainStyle.ShareIcon = styled.img`
