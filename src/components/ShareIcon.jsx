@@ -32,7 +32,8 @@ const ShareIcon = observer(({ item }) => {
             webUrl: window.location.href,
             mobileWebUrl: window.location.href,
           },
-        }).then((r) => capplStore.countShareUserNumber(item.id));
+        });
+        capplStore.countShareUserNumber(item.id);
       }
     } catch (error) {
       console.log("공유 오류", error);
